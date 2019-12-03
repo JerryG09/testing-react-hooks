@@ -5,7 +5,7 @@ interface IState {
   favourites: []
 }
 
-interface IAction {
+export interface IAction {
   type: string
   payload: any
 }
