@@ -42,8 +42,13 @@ function App(): JSX.Element {
   return (
     <div>
       <header className="header">
-        <h1>Holy Mother</h1>
-        <p>Pick your favourite episode</p>
+        <div className="">
+          <h1>Holy Mother</h1>
+          <p>Pick your favourite episode</p>
+        </div>
+        <div className="">
+          Favourite(s): {state.favourites.length}
+        </div>
       </header>
       <div className="episode-layout">
         {state.episodes.map((episode: IEpisode) => {
