@@ -1,19 +1,6 @@
 import React, { useContext, useEffect } from 'react'
-import {Store, IAction} from './store'
-
-interface IEpisode {
-  id: number
-  url: string
-  name: string
-  season: number
-  number: number
-  airdate: string
-  airtime: string
-  airstamp: string
-  runtime: number
-  image: {medium: string, original: string}
-  summary: string
-}
+import { Store } from './store'
+import { IAction, IEpisode } from './interfaces'
 
 function App(): JSX.Element {
   const {state, dispatch} = useContext(Store)
