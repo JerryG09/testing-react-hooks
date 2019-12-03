@@ -53,7 +53,9 @@ function App(): JSX.Element {
               <div className="">{episode.name}</div>
               <div className="">
                 <div className="">Season: {episode.season} Number: {episode.number}</div>
-                <button type="button" onClick={() => toggleFavAction(episode)}>Fav</button>
+                <button type="button" onClick={() => toggleFavAction(episode)}>
+                  {state.favourites.find((fav: IEpisode) => fav.id === episode.id) ? "Unfav" : "Fav"}
+                </button>
               </div>
             </div>
           )
