@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import {Store} from './store'
+import {Store, IAction} from './store'
 
 interface IEpisode {
   id: number
@@ -34,19 +34,29 @@ function App(): JSX.Element {
       payload: dataJSON._embedded.episodes
     })
   }
+
+  const toggleFavAction = (episode: IEpisode): IAction => {
+    return dispatch({
+      type: "ADD_FAV",
+      payload: episode
+    })
+  }
+
   return (
     <div>
-      {console.log(state.episodes)}
-      <h1>Holy Mother</h1>
-      <p>Pick your favourite episode</p>
-      <div className="">
+      <header className="header">
+        <h1>Holy Mother</h1>
+        <p>Pick your favourite episode</p>
+      </header>
+      <div className="episode-layout">
         {state.episodes.map((episode: IEpisode) => {
           return (
-            <div className="" key={episode.id}>
-              {/* <img src={episode.image.medium} alt={`Rick and Mort ${episode.name}`} /> */}
+            <div className="episode-box" key={episode.id}>
+              {/* <img src={episode.image.medium} alt={`Rick and Mort ${episode.name}`}  /> */}
               <div className="">{episode.name}</div>
               <div className="">
-                Season: {episode.season} Number: {episode.number}
+                <div className="">Season: {episode.season} Number: {episode.number}</div>
+                <button type="button" onClick={() => toggleFavAction(episode)}>Fav</button>
               </div>
             </div>
           )
