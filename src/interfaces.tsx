@@ -14,6 +14,12 @@ export interface IAction {
   payload: any
 }
 
+export interface IEpisodeProps {
+  episodes: IEpisode[],
+  toggleFavAction: (episode: IEpisode) => IAction,
+  favourites: Array<IEpisode>
+}
+
 export interface IEpisode {
   id: number
   url: string
