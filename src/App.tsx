@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Store } from './store'
-import { IAction, IEpisode } from './interfaces';
+import { IAction, IEpisode, IEpisodeProps } from './interfaces';
 
 const EpisodeList = React.lazy(() => import('./EpisodeList'))
 
@@ -41,7 +41,8 @@ function App(): JSX.Element {
     return dispatch(dispatchObj)
   }
   console.log(state);
-  const props = {
+
+  const props: IEpisodeProps = {
     episodes: state.episodes,
     toggleFavAction: toggleFavAction,
     favourites: state.favourites
