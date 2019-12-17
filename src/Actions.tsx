@@ -11,7 +11,11 @@ export const fetchData = async (dispatch: any) => {
 }
 
 export const toggleFavAction = (dispatch: any, state: IState, episode: IEpisode | any): IAction => {
+
   const episodeInFav = state.favourites.includes(episode)
+
+  // console.log(state);
+
   let dispatchObj = {
     type: "ADD_FAV",
     payload: episode
