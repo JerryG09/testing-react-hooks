@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { Store } from './store'
-import { IAction, IEpisode } from './interfaces'
+import { IAction, IEpisode } from './interfaces';
+
+const EpisodeList = React.lazy(() => import('./EpisodeList'))
 
 function App(): JSX.Element {
   const {state, dispatch} = useContext(Store)
@@ -35,24 +37,33 @@ function App(): JSX.Element {
         payload: favWithoutEpisode
       }
     }
+    
     return dispatch(dispatchObj)
   }
-  
+  console.log(state);
+  const props = {
+    episodes: state.episodes,
+    toggleFavAction: toggleFavAction,
+    favourites: state.favourites
+  }
+
 
   return (
     <div>
       <header className="header">
         <div className="">
-          <h1>Holy Mother</h1>
+          <h1>Rick and Morty</h1>
           <p>Pick your favourite episode</p>
         </div>
         <div className="">
           Favourite(s): {state.favourites.length}
         </div>
       </header>
-      <div className="episode-layout">
-       
-      </div>
+      <React.Suspense fallback={<div>loading...</div>}>
+        <div className="episode-layout">
+        <EpisodeList {...props} />
+        </div>
+      </React.Suspense>
     </div>
   )
 }
