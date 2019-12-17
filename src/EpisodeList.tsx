@@ -6,7 +6,7 @@ function EpisodeList (props: any)  {
   return episodes.map((episode: IEpisode) => {
     return (
       <div className="episode-box" key={episode.id}>
-        {/* <img src={episode.image.medium} alt={`Rick and Mort ${episode.name}`}  /> */}
+        <img src={episode.image.medium} alt={`Rick and Mort ${episode.name}`}  />
         <div className="">{episode.name}</div>
         <div className="">
           <div className="" style={{ display: "flex", justifyContent: "space-between"}}>
